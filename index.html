@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangon Taxi Fair V2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f59e0b">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <span class="taxi-icon">🚖</span>
+                <h1 id="app-title">Yangon Taxi Fair</h1>
+            </div>
+            <button id="settings-btn" class="icon-btn" title="Settings">⚙️ Setting</button>
+        </header>
+
+        <!-- Mode Switcher -->
+        <div class="mode-selector">
+            <button class="mode-tab active" data-mode="passenger">👤 ခရီးသည် Mode</button>
+            <button class="mode-tab" data-mode="driver">🚖 Taxi ဆရာ Mode</button>
+        </div>
+
+        <!-- Main Calculator Card -->
+        <main class="card">
+            <!-- Passenger View -->
+            <div id="passenger-section" class="mode-section">
+                <div class="input-group">
+                    <label for="km-input">ခရီးအကွာအဝေး (KM)</label>
+                    <input type="number" id="km-input" placeholder="ဥပမာ - 5" step="0.1" min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="waiting-input">စောင့်ရချိန် (မိနစ်)</label>
+                    <input type="number" id="waiting-input" placeholder="ဥပမာ - 10" min="0">
+                </div>
+            </div>
+
+            <!-- Driver View (Placeholder for future GPS/Extra features) -->
+            <div id="driver-section" class="mode-section" style="display: none;">
+                <div class="driver-banner">
+                    <h3>🚖 Taxi ဆရာ Mode</h3>
+                    <p>ခရီးသည်များအတွက် ခန့်မှန်းချေ တွက်ချက်ရန်နှင့် နှုန်းထားစစ်ဆေးရန်</p>
+                </div>
+                <div class="input-group">
+                    <label for="driver-km-input">ခရီးအကွာအဝေး (KM)</label>
+                    <input type="number" id="driver-km-input" placeholder="ဥပမာ - 5" step="0.1" min="0">
+                </div>
+                <div class="input-group">
+                    <label for="driver-waiting-input">စောင့်ရချိန် (မိနစ်)</label>
+                    <input type="number" id="driver-waiting-input" placeholder="ဥပမာ - 10" min="0">
+                </div>
+            </div>
+
+            <button id="calculate-btn" class="primary-btn">🧮 ခရီးခတွက်မည်</button>
+
+            <!-- Result Section -->
+            <div class="result-box">
+                <span class="result-label">သင့်တင်သော ခန့်မှန်းခ (Fare Estimate)</span>
+                <div class="result-value"><span id="total-fare">0</span> <span class="currency">Ks</span></div>
+                <div class="breakdown" id="fare-breakdown">စတင်ခ: 2,500 Ks | KM ဖိုး: 0 Ks | စောင့်ခ: 0 Ks</div>
+            </div>
+        </main>
+
+        <!-- Footer Info -->
+        <footer class="info-footer">
+            <p>💡 ဈေးနှုန်းသည် Yangon Taxi Fair V2 ၏ အကြံပြုခန့်မှန်းချက်သာ ဖြစ်ပါသည်။</p>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Admin Setting (နှုန်းထားများ ပြင်ဆင်ရန်)</h2>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="setting-base">စတင်ခ (Ks)</label>
+                    <input type="number" id="setting-base" value="2500">
+                </div>
+                <div class="input-group">
+                    <label for="setting-km">1 KM လျှင် (Ks)</label>
+                    <input type="number" id="setting-km" value="1200">
+                </div>
+                <div class="input-group">
+                    <label for="setting-waiting">စောင့်ခ (1 မိနစ် လျှင် Ks)</label>
+                    <input type="number" id="setting-waiting" value="100">
+                </div>
+                <button id="save-settings" class="primary-btn">သိမ်းဆည်းမည်</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('V2 Service Worker Registered'));
+        }
+    </script>
+</body>
+</html>
