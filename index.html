@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangon Taxi Fair V7</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f59e0b">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <span class="taxi-icon">🚖</span>
+                <h1>Yangon Taxi Fair</h1>
+            </div>
+            <button id="settings-btn" class="icon-btn">⚙️ Setting</button>
+        </header>
+
+        <!-- Main Calculator Card -->
+        <main class="card">
+            <!-- Start Location -->
+            <div class="input-group">
+                <label>📍 ထွက်ခွာမည့်နေရာ (Start Location)</label>
+                <div class="input-with-action">
+                    <input type="text" id="start-location" placeholder="လက်ရှိနေရာ (GPS ယူရန် နှိပ်ပါ)">
+                    <button id="get-gps-btn" class="action-btn">🛰️ GPS</button>
+                </div>
+            </div>
+
+            <!-- Destination with Search -->
+            <div class="input-group">
+                <label>🏁 ရောက်ရှိမည့်နေရာ (Destination)</label>
+                <input type="text" id="end-location" placeholder="နေရာအမည် ရိုက်ထည့်ပါ (ဥပမာ - Tamwe, Insein)">
+            </div>
+
+            <!-- Interactive Map (Click to select destination) -->
+            <div id="map"></div>
+            <p class="map-hint">💡 မြေပုံပေါ်တွင် လက်ဖြင့်တို့၍လည်း နေရာရွေးချယ်နိုင်ပါသည်။</p>
+
+            <!-- KM Input -->
+            <div class="input-group">
+                <label for="km-input">ခရီးအကွာအဝေး (KM)</label>
+                <input type="number" id="km-input" placeholder="ဥပမာ - 5" step="0.1" min="0">
+            </div>
+
+            <!-- Waiting Time -->
+            <div class="input-group">
+                <label for="waiting-input">စောင့်ရချိန် (မိနစ်)</label>
+                <input type="number" id="waiting-input" placeholder="ဥပမာ - 10" min="0">
+            </div>
+
+            <button id="calculate-btn" class="primary-btn">🧮 ခရီးခတွက်မည်</button>
+
+            <!-- Result Section -->
+            <div class="result-box">
+                <span class="result-label">သင့်တင်သော ခန့်မှန်းခ</span>
+                <div class="result-value"><span id="total-fare">0</span> <span class="currency">Ks</span></div>
+                <div class="breakdown" id="fare-breakdown">စတင်ခ: 2,500 Ks | KM ဖိုး: 0 Ks | စောင့်ခ: 0 Ks</div>
+            </div>
+        </main>
+
+        <!-- Footer Info -->
+        <footer class="info-footer">
+            <p>💡 GPS, Map Click & Search အပြည့်အစုံပါဝင်သော Yangon Taxi V7 ဖြစ်ပါသည်။</p>
+        </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⚙️ Admin Setting (နှုန်းထားများ)</h2>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="setting-base">စတင်ခ (Ks)</label>
+                    <input type="number" id="setting-base" value="2500">
+                </div>
+                <div class="input-group">
+                    <label for="setting-km">1 KM လျှင် (Ks)</label>
+                    <input type="number" id="setting-km" value="1200">
+                </div>
+                <div class="input-group">
+                    <label for="setting-waiting">စောင့်ခ (1 မိနစ် လျှင် Ks)</label>
+                    <input type="number" id="setting-waiting" value="100">
+                </div>
+                <button id="save-settings" class="primary-btn">သိမ်းဆည်းမည်</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
