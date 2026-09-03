@@ -1,7 +1,0 @@
-{
-  "name": "Yangon Taxi Fair",
-  "short_name": "Taxi Fair",
-  "start_url": "./",
-  "display": "standalone",
-  "theme_color": "#0b7a75"
-}
