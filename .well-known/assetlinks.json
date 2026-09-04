@@ -1,1 +1,8 @@
-
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.johnzayar.Taxi",
+        "sha256_cert_fingerprints": ["7C:C2:E8:06:48:E0:DC:14:6B:F4:5E:DC:27:BA:49:33:F6:25:4B:CC:46:30:7A:01:86:D4:CA:78:D5:35:0B:30"]
+      }
+    }]
