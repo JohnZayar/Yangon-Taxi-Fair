@@ -901,7 +901,7 @@ function renderRideOptions(routes) {
           <div class="ride-option-title">YBS <span class="route-pill-inline">${route}</span></div>
           <div class="ride-option-sub">${boardLabel} တက် → ${alightLabel} ဆင်း</div>
         </div>
-        <div class="ride-option-price">~200-500 Ks</div>
+        <div class="ride-option-price">~400-500 Ks</div>
       </div>`;
     })
     .join("");
